@@ -1,0 +1,19 @@
+<h1>Recommendations</h1>
+
+<% if @recommendations.size > 0 %>
+	<ul class="recommendations">
+		<% @recommendations.each do |r| %>
+			<li><%= link_to r.name, recommendation_path(r) %> added <span class="time_ago"><%= time_ago_in_words(r.created_at) %></span> ago.</li>
+		<% end %>
+	</ul>
+<% else %>
+	<p>No recommendations created yet.</p>
+<% end %>
+
+<% if @recommendations.size >= 10 %>
+<p><%= link_to "More recommendations", recommendations_path %></p>
+<% end %>
+
+<p><%= link_to "Add a recommendation", new_recommendation_path %></p>
+
+<p><%= link_to "Tags", tags_path %></p>

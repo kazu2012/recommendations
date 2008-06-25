@@ -1,0 +1,15 @@
+<h1>New description</h1>
+
+<%= error_messages_for :description %>
+
+<% form_for(:description, :url => recommendation_descriptions_path(@recommendation)) do |f| %>
+
+	<% if @old_description %>
+		<%= f.text_area :description, :value => @old_description.description %>
+	<% else %>
+		<%= f.text_area :description %>
+	<% end %>
+  <p>
+    <%= submit_tag "Create" %> <%= cancel_link_to recommendation_path(@recommendation)%>
+  </p>
+<% end %>

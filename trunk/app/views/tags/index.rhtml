@@ -1,0 +1,9 @@
+<%= title("Tags") %>
+
+<ul>
+<% for tag in @tags %>
+
+	<li><%= link_to(tag.name, tag_path(tag.name))%> (<%=tag.taggings.size%>)</li>
+
+<% end %>
+</ul>
