@@ -1,0 +1,10 @@
+
+<h1>Rename <%= @recommendation.name %>?</h1>
+
+<% form_for(:recommendation, :url => recommendation_path(@recommendation), :html => { :method => :put }) do |f| %>
+
+		<label for="recommendation_name">New name:</label> <%= f.text_field :name, {:value => ""} %>
+  <p>
+    <%= submit_tag "Update" %>
+  </p>
+<% end %>

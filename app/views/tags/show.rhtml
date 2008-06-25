@@ -1,0 +1,20 @@
+<% @page_title = @tag.name %>
+<%= title("Tag: " + @tag.name)%>
+
+<p>There are <%=pluralize_verb_noun(@tag.taggings.size, "recommendation") %> with this tag:</p>
+
+<ul class="recommendations">
+	<% @tag.taggings.each do |tagging| %>
+		<li>
+		<% tag_links = Array.new %>
+		<% tagging.recommendation.taggings.each do |tagging| %>
+		<% tag_links << tag_link(tagging) unless tagging.tag.id == @tag.id %>
+		<% end %>
+
+		<%= link_to(tagging.recommendation.name, recommendation_path(tagging.recommendation)) %>
+		
+		<%= content_tag("span", "(also tagged: " + tag_links.to_sentence(:skip_last_comma => true) + ")", :class => "tags") unless tag_links.empty? %>
+		</li>
+
+	<% end %>
+</ul>
