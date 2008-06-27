@@ -16,7 +16,7 @@
   <tr>
     <td><%= link_to justification.created_at.to_s(:long), recommendation_justification_path(@recommendation.id,justification) %></td>
 	<td><%= word_count(justification.justification) %></td>
-	<td><%= justification.user.login %></td>
+	<td><%= justification.user.username %></td>
   </tr>
 <% end %>
 </table>
