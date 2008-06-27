@@ -1,0 +1,22 @@
+
+body {padding: 0; margin: 0;}
+
+body div#page {margin: 0;}
+
+div#body {max-width: 150em;}
+
+
+#body {font-family: Helvetica, Arial, sans-serif;}
+
+
+#body ul.recommendations {width: 100%; padding: 0; margin: 0; }
+
+
+#body ul.recommendations li {border-bottom: 1px solid #D9D9D9; font-size: 18px; line-height: 1.2em; }
+
+#body ul.recommendations li:first-child {border-top: 1px solid #D9D9D9;}
+
+#body ul.recommendations li a {display: block; padding: .6em .6em .6em .6em;}
+
+
+div.pagination a {font-size: 1.4em; margin-left: 1em;}
