@@ -3,7 +3,6 @@ class RecommendationsController < ApplicationController
   before_filter :login_required, :except => [:index, :show]
   
   def index
-    # Should really change this so that the order is the last updated description.
     @recommendations = Recommendation.find(:all,
                                         :conditions => "deleted_at IS NULL",
                                         :order => "updated_at DESC"
@@ -15,8 +14,6 @@ class RecommendationsController < ApplicationController
     end
   end
   
-  # GET /recommendations/1
-  # GET /recommendations/1.xml
   def show
     @recommendation = Recommendation.find(params[:id])
     
@@ -38,28 +35,13 @@ class RecommendationsController < ApplicationController
     @justification = Justification.find(:first, :conditions => ["recommendation_id = ?", @recommendation.id], :order => ["created_at DESC"])
   end
 
-  # GET /recommendations/new
   def new
     @recommendation = Recommendation.new
   end
 
-  # GET /recommendations/1;edit
   def edit
     @recommendation = Recommendation.find(params[:id])
     @description = Description.find(:first, :conditions => ["recommendation_id = ?", @recommendation.id], :order => ["created_at DESC"])
-    
-        if request.post?
-            @description = Description.new
-            @description.description = params[:description][:description]
-            @description.recommendation_id = @recommendation.id
-            @description.save
-
-              if @description.save
-                flash[:notice] = 'Recommendation was successfully updated.'
-                redirect_to recommendation_url(@recommendation) 
-              else
-              end
-        end    
   end
 
   def create
@@ -77,14 +59,11 @@ class RecommendationsController < ApplicationController
     end
   end
 
-  # PUT /recommendations/1
-  # PUT /recommendations/1.xml
   def update
     @recommendation = Recommendation.find(params[:id])
     
      respond_to do |format|
         if @recommendation.update_attributes(params[:recommendation])
-          flash[:notice] = 'Justification was successfully updated.'
           format.html { redirect_to recommendation_url(@recommendation) }
           format.xml  { head :ok }
         else
@@ -96,15 +75,4 @@ class RecommendationsController < ApplicationController
         
   end
 
-  # DELETE /recommendations/1
-  # DELETE /recommendations/1.xml
-  def destroy
-    @recommendation = Recommendation.find(params[:id])
-    @recommendation.delete
-
-    respond_to do |format|
-      format.html { redirect_to recommendations_url }
-      format.xml  { head :ok }
-    end
-  end
 end
