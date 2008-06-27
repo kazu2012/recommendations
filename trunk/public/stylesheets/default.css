@@ -21,7 +21,7 @@ p.skip_navigation a:focus {top: 0;}
 div.edit_info a {display: block;}
 
 
-ul.recommendations {list-style-type: circle; list-style-position: outside;}
+ul.recommendations {list-style-type: none;}
 
 table th {padding-bottom: .5em;}
 table td {padding-right: 3em;}
