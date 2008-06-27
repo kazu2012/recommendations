@@ -13,7 +13,7 @@
 
 		<%= link_to(tagging.recommendation.name, recommendation_path(tagging.recommendation)) %>
 		
-		<%= content_tag("span", "(also tagged: " + tag_links.to_sentence(:skip_last_comma => true) + ")", :class => "tags") unless tag_links.empty? %>
+		<%= content_tag("span", "(also tagged " + tag_links.to_sentence(:skip_last_comma => true) + ")", :class => "tags") unless tag_links.empty? %>
 		</li>
 
 	<% end %>
