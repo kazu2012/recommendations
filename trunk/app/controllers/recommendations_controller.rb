@@ -5,7 +5,9 @@ class RecommendationsController < ApplicationController
   def index
     # Should really change this so that the order is the last updated description.
     @recommendations = Recommendation.find(:all,
-                                        :order => "updated_at DESC")
+                                        :conditions => "deleted_at IS NULL",
+                                        :order => "updated_at DESC"
+                                        )
 
     respond_to do |format|
       format.html # index.rhtml
