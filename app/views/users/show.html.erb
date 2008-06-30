@@ -1,0 +1,10 @@
+<% @page_title = @user.username %>
+<%= title(@user.username)%>
+
+<ul class="recommendations">
+	<% @user.recommendations.each do |recommendation| %>
+	
+		<li><%= link_to h(recommendation.name), recommendation_path(recommendation) %></li>
+	
+	<% end %>
+</ul>

@@ -28,7 +28,7 @@
 	
 <% end %>
 
-<p>First added by <%= @recommendation.user.username %></p>
+<p>First added by <%= user_link(@recommendation.user) %>.</p>
 
 <% tag_links = Array.new %>
 <% @recommendation.taggings.each do |tagging| %>
