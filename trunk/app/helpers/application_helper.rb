@@ -4,6 +4,10 @@ module ApplicationHelper
   def tag_link(tagging)
     link_to(tagging.tag_text, tag_path(tagging.tag.name), {:rel => "tag"})
   end
+  
+  def user_link(user)
+    link_to(user.username, user_path(user.username))
+  end
 
   def cancel_link_to(path, text = "Cancel") 
     link_to(text, path, {:class => "cancel"})
