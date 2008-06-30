@@ -14,10 +14,9 @@
   <tr>
     <td><%= link_to time_ago_in_words(description.created_at), recommendation_description_path(@recommendation.id,description) %> ago</td>
 	<td><%= word_count(description.description)%>
-	<td><%= description.user.login %></td>
+	<td><%= user_link(description.user) %></td>
   </tr>
 <% end %>
 </table>
 
-
-<%= link_to 'New description', new_recommendation_description_path(@recommendation) %>
+<p><%= link_to 'New description', new_recommendation_description_path(@recommendation) %></p>
