@@ -3,16 +3,8 @@
 
 <ul class="recommendations">
 
-<!-- 
- <tr>
-	<th>Name</th>
-	<th class="date">Last updated</th>
-  </tr>
--->  
-
 <% for recommendation in @recommendations %>
   <li><%= link_to h(recommendation.name), recommendation_path(recommendation) %></li>
-   	<!--><td class="date"><%= recommendation.updated_at.to_s(:long) %></td>-->
 <% end %>
 </ul>
 

@@ -4,7 +4,7 @@ class TagsController < ApplicationController
     @tags = Tag.find(:all, :order => "taggings_count DESC")
 
     respond_to do |format|
-      format.html # index.rhtml
+      format.html
       format.xml  { render :xml => @tags.to_xml }
     end
   end
@@ -13,7 +13,7 @@ class TagsController < ApplicationController
     @tag = Tag.find_by_name(params[:id])
 
     respond_to do |format|
-      format.html # show.rhtml
+      format.html
       format.xml  { render :xml => @tag.to_xml }
     end
   end
