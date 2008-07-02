@@ -8,7 +8,10 @@ class Recommendation < ActiveRecord::Base
   has_many :taggings
   
   belongs_to :user
-    
+  
+  def description
+    Description.find(:first, :conditions => ["recommendation_id = ?", self.id], :order => ["created_at DESC"])
+  end  
   
   def delete
     self.is_deleted = true
