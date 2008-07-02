@@ -9,6 +9,8 @@
   <%= stylesheet_link_tag 'iphone', :media => "only screen and (max-device-width: 480px)" %>
   <%= javascript_include_tag :defaults %>
   <meta name="viewport" content="width = 320" />
+	<%= auto_discovery_link_tag(:rss, "/recommendations.rss") %>
+	<%= auto_discovery_link_tag(:atom, "/recommendations.atom") %>
   <% if @recommendation and  @recommendation.taggings.size > 0 %>
 		<% tags = Array.new %>
 		<% @recommendation.taggings.each do |tagging| %>
