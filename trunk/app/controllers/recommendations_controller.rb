@@ -12,6 +12,7 @@ class RecommendationsController < ApplicationController
       format.html # index.rhtml
       format.xml  { render :xml => @recommendations.to_xml }
       format.rss
+      format.atom
     end
   end
   
