@@ -18,5 +18,10 @@ class TagsController < ApplicationController
     end
   end
 
+  private
 
+  def rescue_action_in_public(exception)
+    render :action => :not_found, :status => :not_found
+  end  
+  
 end
