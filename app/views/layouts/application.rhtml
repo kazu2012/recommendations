@@ -7,17 +7,10 @@
   <% #= stylesheet_link_tag 'scaffold' %>
   <%= stylesheet_link_tag 'default' %>
   <%= stylesheet_link_tag 'iphone', :media => "only screen and (max-device-width: 480px)" %>
-  <%= javascript_include_tag :defaults %>
   <meta name="viewport" content="width = 320" />
-	<%= auto_discovery_link_tag(:rss, "/recommendations.rss") %>
-	<%= auto_discovery_link_tag(:atom, "/recommendations.atom") %>
+	<%= auto_discovery_link_tag(:atom, "/recommendations.atom", :title => "Web feed") %>
   <% if @recommendation and  @recommendation.taggings.size > 0 %>
-		<% tags = Array.new %>
-		<% @recommendation.taggings.each do |tagging| %>
-			<% tags << tagging.tag.name %>
-		<% end %>
-		<% tags.sort! %>
-	  <meta name="keywords" content="<%= tags.join(", ") %>">
+	  <meta name="keywords" content="<%= @recommendation.tags.join(", ") %>">
 	<% end %>
 </head>
 <body>

@@ -19,5 +19,16 @@ class Recommendation < ActiveRecord::Base
     self.save!
     
   end
+  
+  def tags
+    if self.taggings.size > 0
+      tags = Array.new
+      self.taggings.each do |tagging|
+        tags << tagging.tag.name
+      end
+      tags.sort!
+    end  
+  end  
+  
 
 end

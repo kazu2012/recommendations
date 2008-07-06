@@ -32,8 +32,9 @@ class TaggingsController < ApplicationController
     @tagging = Tagging.new(params[:tagging])
     @recommendation = Recommendation.find(@tagging.recommendation_id)
 
-    @tagging.tag_text = @tagging.tag_text.strip
-    tag_name = @tagging.tag_text.downcase
+    @tagging.tag_text = @tagging.tag_text.strip.gsub(/(\s)+/, " ")
+
+    tag_name = @tagging.tag_text.downcase.gsub(".", "").gsub(",", "")
     
 
     @tag = Tag.find_by_name(tag_name)
