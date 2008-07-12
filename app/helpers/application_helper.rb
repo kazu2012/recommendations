@@ -51,7 +51,7 @@ module ApplicationHelper
   end  
   
   def description_format(text)
-    paragraph_format(auto_link(h(text)))
+    paragraph_format(auto_link_phone_numbers(auto_link(h(text))))
   end
   
   def paragraph_format(text)
@@ -60,6 +60,12 @@ module ApplicationHelper
       gsub(/([^\n])\n([^\n])/, '\1 \2').      # Remove carriage returns
       gsub(/\n\n+/, "</p>\n\n<p>"))           # 2+ newline  -> paragraph
   end  
+  
+  def auto_link_phone_numbers(text)
+    text.gsub(/(\s|^)((0|\+44)\d{10,10})\b/) do 
+      text = $1 + "<a href=\"tel:" + $2 + "\">" + $2 + "</a>"
+    end
+  end
   
   def link_to_content(name)
     link_to(name, "#body", {:class => "skip_navigation", :accesskey => "2"})
