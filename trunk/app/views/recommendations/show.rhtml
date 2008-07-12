@@ -32,7 +32,7 @@
 
 <% tag_links = Array.new %>
 <% @recommendation.taggings.each do |tagging| %>
-<% tag_links << tag_link(tagging) + " <sup>" + link_to("x", tagging_path(tagging), :method => "delete") + "</sup>"%>
+<% tag_links << tag_link(tagging) + " " + link_to("x", tagging_path(tagging), :method => "delete", :confirm => "Are you sure you want to delete this tag?", :title => "Delete tag", :class => "delete") + ""%>
 <% end %>
 <% tag_links.sort! %>
 

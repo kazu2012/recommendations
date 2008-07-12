@@ -7,6 +7,8 @@ div.notice {color: green;}
 
 p.site_name {text-align: center;}
 
+a.delete {color: red; vertical-align: super}
+
 /* a {padding: 2px;} */
 
 h1 {border: 0;}
