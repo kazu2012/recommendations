@@ -1,7 +1,7 @@
-<% @page_title = @tag.name %>
-<%= title("Tag: " + @tag.name)%>
+<% @page_title = "Recommendations tagged '" + @tag.name + "'" %>
+<%= title(@page_title)%>
 
-<p>There are <%=pluralize_verb_noun(@tag.taggings.size, "recommendation") %> with this tag:</p>
+<p>There <%=pluralize_verb_noun(@tag.taggings.size, "recommendation") %> with this tag:</p>
 
 <ul class="recommendations">
 	<% @tag.taggings.each do |tagging| %>
@@ -18,3 +18,5 @@
 
 	<% end %>
 </ul>
+
+<p>See <%= link_to "all tags", tags_path %>.</p>
