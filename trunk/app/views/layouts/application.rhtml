@@ -22,7 +22,7 @@
 				<% #<p class="site_strapline"></p> %>
 			</div>	
 			<% if logged_in? %>
-			<p>You are logged in as <%= current_user.username %>. <%= link_to "logout", logout_path%> </p>
+			<p>You are logged in as <%= user_link current_user %>. <%= link_to "logout", logout_path%> </p>
 			<% else %>
 			<p><%= link_to "login", login_path%> or <%= link_to "register", register_path%></p>
 			<% end %>
