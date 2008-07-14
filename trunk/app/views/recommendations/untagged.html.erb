@@ -1,0 +1,8 @@
+<p>There <%= pluralize_verb_noun(@recommendations.size, "recommendation") %> with no tags:</p>
+
+<ul class="recommendations">
+
+<% for recommendation in @recommendations %>
+  <li><%= link_to h(recommendation.name), recommendation_path(recommendation) %></li>
+<% end %>
+</ul>

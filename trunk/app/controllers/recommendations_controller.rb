@@ -16,6 +16,13 @@ class RecommendationsController < ApplicationController
     end
   end
   
+  def untagged
+    @recommendations = Recommendation.find(:all,
+                                        :conditions => "deleted_at IS NULL and taggings_count = 0",
+                                        :order => "updated_at DESC"
+                                        )
+  end
+  
   def show
     @recommendation = Recommendation.find(params[:id])
     

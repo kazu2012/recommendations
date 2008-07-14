@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :tags
 
 
-  map.resources :recommendations, :collection => {:search => :get}, :member => {:justification => :get} do |r|
+  map.resources :recommendations, :collection => {:search => :get, :untagged => :get}, :member => {:justification => :get} do |r|
     r.resources :descriptions
     r.resources :justifications
   end
