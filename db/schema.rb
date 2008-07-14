@@ -12,29 +12,29 @@
 ActiveRecord::Schema.define(:version => 20080714171748) do
 
   create_table "descriptions", :force => true do |t|
-    t.integer  "recommendation_id"
+    t.integer  "recommendation_id", :limit => 11
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
+    t.integer  "user_id",           :limit => 11
   end
 
   create_table "justifications", :force => true do |t|
-    t.integer  "recommendation_id"
+    t.integer  "recommendation_id", :limit => 11
     t.text     "justification"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
+    t.integer  "user_id",           :limit => 11
   end
 
   create_table "recommendations", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
+    t.integer  "user_id",        :limit => 11
     t.boolean  "is_deleted"
     t.datetime "deleted_at"
-    t.integer  "taggings_count", :default => 0
+    t.integer  "taggings_count", :limit => 11, :default => 0
   end
 
   create_table "sessions", :force => true do |t|
@@ -44,21 +44,21 @@ ActiveRecord::Schema.define(:version => 20080714171748) do
     t.datetime "updated_at"
   end
 
-  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "taggings", :force => true do |t|
-    t.integer  "recommendation_id"
-    t.integer  "tag_id"
+    t.integer  "recommendation_id", :limit => 11
+    t.integer  "tag_id",            :limit => 11
     t.string   "tag_text"
     t.datetime "created_at"
-    t.integer  "user_id"
+    t.integer  "user_id",           :limit => 11
   end
 
   create_table "tags", :force => true do |t|
     t.string  "name"
     t.string  "created_at"
-    t.integer "taggings_count", :default => 0
+    t.integer "taggings_count", :limit => 11, :default => 0
   end
 
   create_table "users", :force => true do |t|
