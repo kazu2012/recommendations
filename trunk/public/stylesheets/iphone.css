@@ -20,3 +20,5 @@ div#body {max-width: 150em;}
 
 
 div.pagination a {font-size: 1.4em; margin-left: 1em;}
+
+input {max-width: 12em;}
