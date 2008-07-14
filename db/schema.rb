@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080625165001) do
+ActiveRecord::Schema.define(:version => 20080714171748) do
 
   create_table "descriptions", :force => true do |t|
     t.integer  "recommendation_id"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20080625165001) do
     t.integer  "user_id"
     t.boolean  "is_deleted"
     t.datetime "deleted_at"
+    t.integer  "taggings_count", :default => 0
   end
 
   create_table "sessions", :force => true do |t|
