@@ -36,21 +36,21 @@ class TaggingsController < ApplicationController
 
     tag_name = @tagging.tag_text.downcase.gsub(".", "").gsub(",", "")
     
-
     @tag = Tag.find_by_name(tag_name)
     
-    if @tag == nil
+    if @tag == nil and tag_name != ""
       @tag = Tag.new
       @tag.name = tag_name
       @tag.save!
     end
     
-    @tagging.tag = @tag
-    
-    @tagging.user_id = current_user.id
+    if @tag
+      @tagging.tag = @tag
+      @tagging.user_id = current_user.id
+    end
 
     respond_to do |format|
-      if @tagging.save
+      if @tag && @tagging.save
         format.html { redirect_to recommendation_url(@recommendation) }
         format.xml  { head :created, :location => recommendation_url(@recommendation) }
       else
