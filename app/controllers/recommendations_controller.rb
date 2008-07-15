@@ -3,10 +3,22 @@ class RecommendationsController < ApplicationController
   before_filter :login_required, :only => [:new, :edit, :create, :update]
   
   def index
-    @recommendations = Recommendation.find(:all,
+    
+    if params[:search]
+      @search_string = params[:search]
+    end
+    
+    if @search_string
+      @recommendations = Recommendation.find(:all,
+                                        :conditions => ["deleted_at IS NULL and name LIKE ?", "%" + params[:search] + "%"],
+                                        :order => "updated_at DESC"
+                                        )
+    else
+      @recommendations = Recommendation.find(:all,
                                         :conditions => "deleted_at IS NULL",
                                         :order => "updated_at DESC"
                                         )
+    end                          
 
     respond_to do |format|
       format.html # index.rhtml
@@ -22,6 +34,10 @@ class RecommendationsController < ApplicationController
                                         :order => "updated_at DESC"
                                         )
   end
+  
+  def search
+
+  end  
   
   def show
     @recommendation = Recommendation.find(params[:id])
