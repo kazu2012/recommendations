@@ -62,7 +62,7 @@ ul.recommendations li a {font-size: 1.2em;}
 body {padding: 2em 6em 2em 6em;}
 
 
-div#body {max-width: 50em;}
+div#body {max-width: 50em; clear: both;}
 
 /* Padding, floats, border widths and margins */
 
@@ -83,7 +83,7 @@ div.editable_field h1 {margin: 0;}
 
 
 div#body div.editable_field:focus,
-div#body div.editable_field:hover {left: -6em; position: relative; top: 0; width: 56em; /* Need to re-do this*/}
+div#body div.editable_field:hover {left: -6em; position: relative; top: 0; width: 54em; /* Need to re-do this*/}
 div.editable_field div.edit_info:focus,
 div.editable_field:hover div.edit_info {float: left; width: 5.6em; padding-left: .2em; padding-right: .2em;}
 
