@@ -9,6 +9,9 @@ p.site_name {text-align: center;}
 
 a.delete {color: red; vertical-align: super}
 
+p.search {width: 20em; float: right; margin-top: 0; text-align: right;}
+
+
 /* a {padding: 2px;} */
 
 h1 {border: 0;}
@@ -56,7 +59,7 @@ ul.recommendations li a {font-size: 1.2em;}
 
 /* Page margin */
 
-body {padding: 2em 2em 2em 6em;}
+body {padding: 2em 6em 2em 6em;}
 
 
 div#body {max-width: 50em;}

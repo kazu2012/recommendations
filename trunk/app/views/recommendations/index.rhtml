@@ -1,6 +1,11 @@
 <% @page_title = "Recommendations" %>
 <h1>Recommendations</h1>
 
+<% if params[:search] %>
+<p>There <%= pluralize_verb_noun @recommendations.length, "recommendation", "is" %> that match your search for '<%= h params[:search]%>'.</p>
+<% end %>
+
+
 <ul class="recommendations">
 
 <% for recommendation in @recommendations %>
