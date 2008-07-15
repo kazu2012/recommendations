@@ -1,6 +1,6 @@
 class RecommendationsController < ApplicationController
 
-  before_filter :login_required, :except => [:index, :show]
+  before_filter :login_required, :only => [:new, :edit, :create, :update]
   
   def index
     @recommendations = Recommendation.find(:all,
