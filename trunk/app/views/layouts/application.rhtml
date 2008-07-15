@@ -22,12 +22,12 @@
 				<% #<p class="site_strapline"></p> %>
 			</div>	
 
-			<% form_tag recommendations_path, :method => 'get' do %>
+			<%- form_tag recommendations_path, :method => 'get' do -%>
 			  <p class="search">
 			    <%= text_field_tag :search, @search_string %>
 			    <%= submit_tag "Search", :name => nil %>
 			  </p>
-			<% end %>
+			<%- end -%>
 
 			<% if logged_in? %>
 			<p>You are logged in as <%= user_link current_user %>. <%= link_to "logout", logout_path%> </p>
