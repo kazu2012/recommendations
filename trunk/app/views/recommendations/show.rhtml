@@ -28,7 +28,7 @@
 	
 <% end %>
 
-<p>First added by <%= user_link(@recommendation.user) %>.</p>
+<p>Created by <%= user_link(@recommendation.user) %> <%= time_ago_in_words(@recommendation.created_at) %> ago.</p>
 
 <% tag_links = Array.new %>
 <% @recommendation.taggings.each do |tagging| %>
