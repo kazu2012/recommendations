@@ -12,6 +12,8 @@ a.delete {color: red; vertical-align: super}
 p.search {width: 20em; float: right; margin-top: 0; text-align: right;}
 
 
+
+
 /* a {padding: 2px;} */
 
 h1 {border: 0;}
@@ -37,6 +39,8 @@ table td {padding-right: 3em;}
 
 body {font-size: 16px; font-weight: normal; font-family: helvetica, verdana, arial, sans-serif;}
 
+body div#message {font-size: .75em; line-height: 1.25em;}
+
 p.site_name {font-size: 2em;}
 
 div.editable_field div.edit_info {font-size: .8em; vertical-align: bottom; line-height: 2.5em; /* 2/.8 */}
@@ -59,12 +63,22 @@ ul.recommendations li a {font-size: 1.2em;}
 
 /* Page margin */
 
-body {padding: 2em 6em 2em 6em;}
+body {padding: 0 0 0 0; margin: 0 1px 0 1px;}
+
+body div#message {margin: 0 0 0 0; padding: 0 0 0 0; margin-bottom: 0;}
+
+body div#message p {margin: 0 }
+
+body div#page {padding: 2em 6em 2em 6em;}
 
 
 div#body {max-width: 50em; clear: both;}
 
 /* Padding, floats, border widths and margins */
+
+div#message {border-width: 1px 0 1px 0; }
+
+div#message p {padding: .5em 2.5em .5em 2.5em;}
 
 ul.recommendations {margin-left: 0; padding-left: 0;}
 ul.recommendations li {margin-bottom: .5em;}
@@ -98,6 +112,9 @@ div.editable_field:hover form {margin-left: 6em;}
 body {background-color: #343628; color: #B5D180;}
 
 /* div, h1 {border-color: white;} */
+
+div#message {border-color: #222; background-color: #555; color: #FFF;}
+div#message.warning {background-color: #700; color: white;}
 
 div.editable_field:focus div.field,
 div.editable_field:hover div.field,
