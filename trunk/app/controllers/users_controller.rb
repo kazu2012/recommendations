@@ -24,6 +24,14 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find_by_username(params[:id])
+    
+    @recommendations = Recommendation.find(:all, :conditions => ["user_id = ?", @user.id], :limit => 10, :order => "created_at DESC")
+    
+    @descriptions = Description.find(:all, :conditions => ["user_id = ?", @user.id], :limit => 10, :order => "created_at DESC")
+
+    @justifications = Justification.find(:all, :conditions => ["user_id = ?", @user.id], :limit => 10, :order => "created_at DESC")
+
+    
   end
 
 end
