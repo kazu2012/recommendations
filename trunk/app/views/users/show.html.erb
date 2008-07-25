@@ -2,36 +2,37 @@
 <%= title(@user.username)%>
 
 <%
-@activities = Array.new
-@activities_time = Array.new
+@activities = []
 
 @recommendations.each do |recommendation|
   
-  @activities << "Added " + link_to(h(recommendation.name), recommendation_path(recommendation)) + " " + time_ago_in_words(recommendation.created_at) +  " ago."
-  @activities_time << recommendation.created_at
+  @activities << [recommendation.created_at, "Added " + link_to(h(recommendation.name), recommendation_path(recommendation)) + " " + time_ago_in_words(recommendation.created_at) +  " ago."]
+
 end
 
 @descriptions.each do |description|
 
-	@activities << "Edited the description for " + link_to(h(description.recommendation.name), recommendation_path(description.recommendation)) + " " + time_ago_in_words(description.created_at) + " ago."
-  @activities_time << description.recommendation.created_at
+	@activities << [description.created_at, "Edited the description for " + link_to(h(description.recommendation.name), recommendation_path(description.recommendation)) + " " + time_ago_in_words(description.created_at) + " ago."]
 
  end 
 
 @justifications.each do |justification|
 	
-  @activities << "Edited the justification for " + link_to(h(justification.recommendation.name), justification_recommendation_path(justification.recommendation)) + " " + time_ago_in_words(justification.created_at) + " ago."
-  @activities_time << justification.recommendation.created_at
+  @activities << [justification.created_at, "Edited the justification for " + link_to(h(justification.recommendation.name), justification_recommendation_path(justification.recommendation)) + " " + time_ago_in_words(justification.created_at) + " ago."]
 
 end
+
+@activities.sort!
+@activities.reverse!
+
 %>
 
 
 
-<ul>
+<ul class="recommendations">
 	<% @activities.each do |activity| %>
 	
-		<li><%= activity %></li>
+		<li><%= activity[1] %></li>
 
 	<% end%>
 
