@@ -51,7 +51,13 @@ module ApplicationHelper
   end  
   
   def description_format(text)
-    paragraph_format(auto_link_phone_numbers(auto_link(h(text))))
+    paragraph_format(auto_link_phone_numbers(auto_link(mark_code(text))))
+  end
+
+  def mark_code(text)
+    text.gsub(/(^<.*$|<[^>]*>)/) do 
+      text = "<code>" + h($1) + "</code>"
+    end
   end
   
   def paragraph_format(text)

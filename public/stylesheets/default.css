@@ -127,6 +127,7 @@ div.editable_field div.edit_info {}
 body a 						{color: #60A176;}
 body div#body a:visited 	{color: #245B70;}
 
+body div#body code {background-color: #333; color: #B7CC8F;}
 
 a.cancel {color: red;}
 
