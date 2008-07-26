@@ -30,20 +30,4 @@
 
 <p>Created by <%= user_link(@recommendation.user) %> <%= time_ago_in_words(@recommendation.created_at) %> ago.</p>
 
-<% tag_links = Array.new %>
-<% @recommendation.taggings.each do |tagging| %>
-<% tag_links << tag_link(tagging) + " " + link_to("x", tagging_path(tagging), :method => "delete", :confirm => "Are you sure you want to delete this tag?", :title => "Delete tag", :class => "delete") + ""%>
-<% end %>
-<% tag_links.sort! %>
-
-<%= content_tag("p", "Tagged: " + tag_links.to_sentence + ".", :class => "tags") unless tag_links.empty? %>
-
-<% if logged_in? %>
-	<% form_for(:tagging, :url => taggings_path) do |f| %>
-
-		<%= f.hidden_field :recommendation_id, {:value => @recommendation.id} %>
-		<%= f.text_field :tag_text %>
-		<%= submit_tag "Add tag" %>
-
-	<% end %>
-<% end%>
+<%= render(:partial => "taggings")%>
