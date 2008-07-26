@@ -51,7 +51,14 @@ class TaggingsController < ApplicationController
 
     respond_to do |format|
       if @tag && @tagging.save
-        format.html { redirect_to recommendation_url(@recommendation) }
+        format.html { 
+          
+          if params[:return_to] == "justification"
+            redirect_to justification_recommendation_url(@recommendation) 
+          else  
+            redirect_to recommendation_url(@recommendation) 
+          end
+          }
         format.xml  { head :created, :location => recommendation_url(@recommendation) }
       else
         flash[:notice] = "Error adding tag"
