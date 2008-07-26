@@ -1,6 +1,8 @@
 <% @page_title = @user.username %>
 <%= title(@user.username)%>
 
+<p><%= @user.username %> has added <%= pluralize @user.recommendations.size, "recommendation" %> and <%= pluralize @user.taggings.size, "tag" %>.</p>
+
 <%
 @activities = []
 
