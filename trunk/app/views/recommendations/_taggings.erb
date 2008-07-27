@@ -9,8 +9,8 @@
 <% if logged_in? %>
 	<% form_for(:tagging, :url => taggings_path) do |f| %>
 
-		<%= f.hidden_field :recommendation_id, {:value => @recommendation.id} %>
-		<%= hidden_field_tag :return_to, "justification" %>
+		<%= f.hidden_field :recommendation_id, {:value => @recommendation.id}  %>
+		<%= hidden_field_tag :return_to, "justification" if controller.action_name == "justification" %>
 
 		<%= f.text_field :tag_text %>
 		<%= submit_tag "Add tag" %>
