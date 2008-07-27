@@ -12,6 +12,10 @@ class Recommendation < ActiveRecord::Base
   def description
     Description.find(:first, :conditions => ["recommendation_id = ?", self.id], :order => ["created_at DESC"])
   end  
+
+  def justification
+    Justification.find(:first, :conditions => ["recommendation_id = ?", self.id], :order => ["created_at DESC"])
+  end
   
   def delete
     self.is_deleted = true

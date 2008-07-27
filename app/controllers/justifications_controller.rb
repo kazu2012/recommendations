@@ -17,6 +17,7 @@ class JustificationsController < ApplicationController
 
   def show
     @justification = Justification.find(params[:id])
+    @recommendation = @justification.recommendation
 
     respond_to do |format|
       format.html # show.rhtml
