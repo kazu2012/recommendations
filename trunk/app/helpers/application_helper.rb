@@ -28,8 +28,8 @@ module ApplicationHelper
     title(text)
   end
   
-  def editable_resource_title(entity, resource_path = nil)
-    editable_text(content_tag("h1",x(entity.name)), "Rename", nil, resource_path)
+  def editable_resource_title(entity, resource_path = nil, editable_path = nil)
+    editable_text(content_tag("h1",x(entity.name)), "Rename", editable_path, resource_path)
   end
   
   def editable_text(text, edit_label = 'Edit', editable_path = nil, text_link_path = nil)
