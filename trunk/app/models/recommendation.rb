@@ -6,6 +6,7 @@ class Recommendation < ActiveRecord::Base
   has_many :descriptions  
   has_many :justifications
   has_many :taggings
+  has_many :tags, :through => :taggings
   
   belongs_to :user
   
@@ -24,11 +25,11 @@ class Recommendation < ActiveRecord::Base
     
   end
   
-  def tags
+  def text_tags
     if self.taggings.size > 0
       tags = Array.new
       self.taggings.each do |tagging|
-        tags << tagging.tag.name
+        tags << tagging.tag_text
       end
       tags.sort!
     end  

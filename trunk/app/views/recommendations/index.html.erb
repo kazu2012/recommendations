@@ -1,18 +1,44 @@
 <% @page_title = "Recommendations" %>
 <h1>Recommendations</h1>
 
-<% if params[:search] %>
-<p>There <%= pluralize_verb_noun @recommendations.length, "recommendation", "is" %> that match your search for '<%= h params[:search]%>'.</p>
+<% if params[:search] && @recommendations.length > 0 %>
+<p>There <%= pluralize_verb_noun @recommendations.length, "recommendation", "is" %> matching your search for '<%= h params[:search]%>'. 
+ 
+<% if @tag %>	
+There is also a <%= link_to @tag.name, tag_path(@tag.name) %> tag.
+<% end %>
+</p>
 <% end %>
 
 
-<ul class="recommendations">
+<% if @recommendations.length > 0 %>
+	<ul class="recommendations"> 
 
-<% for recommendation in @recommendations %>
-  <li><%= link_to h(recommendation.name), recommendation_path(recommendation) %></li>
+	<% for recommendation in @recommendations %>
+	  <li><%= link_to h(recommendation.name), recommendation_path(recommendation) %>
+				
+		<% if @tag && recommendation.tags.include?(@tag) %>
+			<span class="tags">(tagged <%= link_to(@tag.name, tag_path(@tag.name))%>)</span>
+		<% end %>
+		</li>
+	<% end %> 
+	</ul>
+
+<% elsif params[:search] %>	
+
+	<p>No recommendations matched your search for '<%= h params[:search]%>'.</p> 
+	
+	<p><%= link_to 'Add one', new_recommendation_path %>?</p>
+
+<% else %>
+	
+	<p>There aren't any recommendations yet.</p>
+	
+	<p>Why not <%= link_to 'add one', new_recommendation_path %> to get started?</p>
+	
 <% end %>
-</ul>
 
-<br />
+<% if params[:search] && @tag %>
 
-<p><%= link_to 'Add recommendation', new_recommendation_path %></p>
+
+<% end %>

@@ -1,8 +1,12 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   
-  def tag_link(tagging)
-    link_to(tagging.tag_text, tag_path(tagging.tag.name), {:rel => "tag"})
+  def tag_link(tagging, rel_link = true)
+    if rel_link
+      link_to(tagging.tag_text, tag_path(tagging.tag.name), {:rel => "tag"})
+    else
+      link_to(tagging.tag_text, tag_path(tagging.tag.name))
+    end
   end
   
   def user_link(user)
