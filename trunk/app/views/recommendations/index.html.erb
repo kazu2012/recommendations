@@ -16,10 +16,9 @@ There is also a <%= link_to @tag.name, tag_path(@tag.name) %> tag.
 
 	<% for recommendation in @recommendations %>
 	  <li><%= link_to h(recommendation.name), recommendation_path(recommendation) %>
-				
-		<% if @tag && recommendation.tags.include?(@tag) %>
+		<%- if @tag && recommendation.tags.include?(@tag) -%>
 			<span class="tags">(tagged <%= link_to(@tag.name, tag_path(@tag.name))%>)</span>
-		<% end %>
+		<%- end -%>
 		</li>
 	<% end %> 
 	</ul>
