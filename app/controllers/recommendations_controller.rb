@@ -13,6 +13,15 @@ class RecommendationsController < ApplicationController
                                         :conditions => ["deleted_at IS NULL and name LIKE ?", "%" + params[:search] + "%"],
                                         :order => "updated_at DESC"
                                         )
+      
+      @tag = Tag.find_by_name(@search_string)
+      
+      if @tag
+        @tag.recommendations.each do |recommendation|
+          @recommendations << recommendation unless @recommendations.include?(recommendation)
+        end        
+      end
+                           
     else
       @recommendations = Recommendation.find(:all,
                                         :conditions => "deleted_at IS NULL",
