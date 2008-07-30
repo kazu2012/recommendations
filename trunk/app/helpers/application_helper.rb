@@ -116,9 +116,6 @@ module ApplicationHelper
     link_to(text, homepage_path)
   end
   
-  def navigation_link_to(a,b)
-  end
-  
   def word_count(string)
     pluralize(words(string), "word")
   end
