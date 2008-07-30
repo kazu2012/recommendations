@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
 
   
-
-  # render new.rhtml
   def new
   end
 
@@ -30,8 +28,11 @@ class UsersController < ApplicationController
     @descriptions = Description.find(:all, :conditions => ["user_id = ?", @user.id], :limit => 10, :order => "created_at DESC")
 
     @justifications = Justification.find(:all, :conditions => ["user_id = ?", @user.id], :limit => 10, :order => "created_at DESC")
+  
+  end
 
-    
+  def index
+    @users = User.find(:all)
   end
 
 end
