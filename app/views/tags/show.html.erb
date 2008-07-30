@@ -1,4 +1,4 @@
-<% @page_title = "Recommendations tagged '" + @tag.name + "'" %>
+<% @page_title = @tag.name %>
 <%= title(@page_title)%>
 
 <p>There <%=pluralize_verb_noun(@tag.taggings.size, "recommendation") %> with this tag:</p>
