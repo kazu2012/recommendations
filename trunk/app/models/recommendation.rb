@@ -22,18 +22,19 @@ class Recommendation < ActiveRecord::Base
     self.is_deleted = true
     self.deleted_at = DateTime.now
     self.save!
-    
   end
   
-  def text_tags
+  def tags_csv
     if self.taggings.size > 0
       tags = Array.new
       self.taggings.each do |tagging|
-        tags << tagging.tag_text
+        tags << tagging.tag.name
       end
       tags.sort!
-    end  
-  end  
-  
+      return tags.join(", ")
+    end    
+  end
+
+
 
 end
