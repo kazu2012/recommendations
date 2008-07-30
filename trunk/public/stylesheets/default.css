@@ -30,7 +30,7 @@ div.edit_info a {display: block;}
 ul.subnav {display: block; list-style-type: none; margin-left: 0; padding-left: 0; padding-top: 0; margin-top: 0;}
 ul.subnav li a, ul.subnav li span {display: block; float: left; padding: .5em 0 .5em 0; margin-right: 1em; }
 
-ul.subnav + p {clear: left; padding-top: 1em;}
+ul.subnav + * {clear: left; padding-top: 1em;}
 
 ul.recommendations {list-style-type: none;}
 
