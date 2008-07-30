@@ -1,11 +1,11 @@
 <%= title("Tags") %>
 
-<ul>
+<ol>
 <% for tag in @tags %>
 
 	<li><%= link_to(tag.name, tag_path(tag.name))%> (<%=tag.taggings.size%>)</li>
 
 <% end %>
-</ul>
+</ol>
 
 <p>See also <%= link_to "untagged recommendations", untagged_recommendations_path %>.</p>
