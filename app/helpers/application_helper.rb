@@ -109,7 +109,7 @@ module ApplicationHelper
   end
   
   def list_link_to(name, link)
-    content_tag("li", link_to(name, link))
+    content_tag("li", navigation_link_to(name, link))
   end
   
   def link_to_homepage(text)
