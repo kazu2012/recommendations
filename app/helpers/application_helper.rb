@@ -177,6 +177,10 @@ module ApplicationHelper
     end
   end
   
+  def meta_tag(name, content)
+    return tag("meta", :name => name, :content => content)
+  end
+  
   def x(text)
     xhtml_escape(text)
   end
@@ -184,5 +188,11 @@ module ApplicationHelper
   def xhtml_escape(text)
     html_escape(text)
   end
+  
+  # HTML4 version of tag helper
+  def tag(name, options = nil, open = false, escape = true)
+    return "<#{name}#{tag_options(options, escape) if options}#{open ? ">" : " ></#{name}>"}"
+  end
+  
   
 end
