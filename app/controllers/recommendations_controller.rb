@@ -105,8 +105,14 @@ class RecommendationsController < ApplicationController
           format.xml  { render :xml => @recommendation.errors.to_xml }
         end
       end
+  end
 
-        
+  def unjustified
+    @recommendations = Recommendation.find(:all, :conditions => "deleted_at IS NULL and justifications_count = 0", :order => "updated_at DESC")
+  end
+
+  def undescribed
+    @recommendations = Recommendation.find(:all, :conditions => "deleted_at IS NULL and descriptions_count = 0", :order => "updated_at DESC")
   end
 
 end
