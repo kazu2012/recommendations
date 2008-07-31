@@ -70,7 +70,14 @@ class TaggingsController < ApplicationController
 
   def destroy
     @tagging = Tagging.find(params[:id])
+    tag_id = @tagging.tag.id
     @tagging.destroy
+    
+    @tag = Tag.find(tag_id)
+    if @tag.taggings_count == 0
+      @tag.destroy
+    end
+    
 
     respond_to do |format|
       format.html { redirect_to recommendation_url(@tagging.recommendation.id) }
