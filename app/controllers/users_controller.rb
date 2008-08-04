@@ -35,4 +35,26 @@ class UsersController < ApplicationController
     @users = User.find(:all)
   end
 
+  def edit
+    @user = User.find_by_username(params[:id])
+  end
+  
+  def update
+    @user = User.find_by_username(params[:id])
+    
+    @user.email = params[:user][:email]
+    
+    respond_to do |format|
+       if @user.save!
+         flash[:notice] = "Updated!"
+         format.html { redirect_to edit_user_url(@user.username) }
+         format.xml  { head :ok }
+       else
+         format.html { render :action => "edit" }
+         format.xml  { render :xml => @user.errors.to_xml }
+       end
+     end
+  end
+
+
 end
