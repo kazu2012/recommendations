@@ -85,8 +85,8 @@ div#message {border-width: 1px 0 1px 0; }
 
 div#message p {padding: .5em 2.5em .5em 2.5em;}
 
-ul.recommendations {margin-left: 0; padding-left: 0;}
-ul.recommendations li {margin-bottom: .5em;}
+ul.recommendations {margin-left: 0; padding-left: 0;;}
+ul.recommendations li {margin-bottom: .8em;}
 
 input.title {border-width: 0; padding: 0;}
 
