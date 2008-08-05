@@ -1,6 +1,9 @@
 
 <h1>Rename <%= @recommendation.name %>?</h1>
 
+<%= error_messages_for :recommendation %>
+
+
 <% form_for(:recommendation, :url => recommendation_path(@recommendation), :html => { :method => :put }) do |f| %>
 
 	

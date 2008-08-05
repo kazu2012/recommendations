@@ -81,6 +81,9 @@ class RecommendationsController < ApplicationController
   def create
     @recommendation = Recommendation.new(params[:recommendation])
     @recommendation.user_id = current_user.id
+    
+    @recommendation.name = @recommendation.name.strip.gsub(/(\s)+/, " ")
+    
 
     respond_to do |format|
       if @recommendation.save
@@ -94,10 +97,12 @@ class RecommendationsController < ApplicationController
   end
 
   def update
-    @recommendation = Recommendation.find(params[:id])
+    @recommendation = Recommendation.find(params[:id])  
+    @recommendation.name = params[:recommendation][:name].strip.gsub(/(\s)+/, " ")
+
     
      respond_to do |format|
-        if @recommendation.update_attributes(params[:recommendation])
+        if @recommendation.save
           format.html { redirect_to recommendation_url(@recommendation) }
           format.xml  { head :ok }
         else
