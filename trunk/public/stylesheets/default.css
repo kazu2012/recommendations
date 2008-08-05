@@ -164,7 +164,7 @@ table th {text-align: left;}
 div.editable_field div.edit_info {display: none;}
 /* div.editable_field div.edit_info {display: none;} */
 div.editable_field:focus div.edit_info,
-div.editable_field:hover div.edit_info {position:relative; display: block; position: relative;}
+div.editable_field:hover div.edit_info {position:relative; display: block;}
 
 div.editable_field div.edit_info a {text-decoration: none;}
 div.editable_field div.edit_info a:focus,
