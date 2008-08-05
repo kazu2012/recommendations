@@ -6,7 +6,7 @@
 	<%= title(@user.username)%>
 <% end %>
 
-<p><%= @user.username %> has added <%= pluralize @user.recommendations.size, "recommendation" %> and <%= pluralize @user.taggings.size, "tag" %>.</p>
+<p class="microid-<%= microid(@user.email, user_url(@user)) %>"><%= @user.username %> has added <%= pluralize @user.recommendations.size, "recommendation" %> and <%= pluralize @user.taggings.size, "tag" %>.</p>
 
 <%
 @activities = []
