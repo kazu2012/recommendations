@@ -2,7 +2,7 @@
        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Recommendations - <%= @page_title %></title>
+  <title>Recommendations<%= " - " + @page_title unless @page_title.nil? %></title>
   <%= stylesheet_link_tag 'default' %>
   <%= stylesheet_link_tag 'iphone', :media => "only screen and (max-device-width: 480px)" %>
   <meta name = "viewport" content = "initial-scale = 1.0"></meta>
