@@ -12,6 +12,7 @@ a.delete {color: red; vertical-align: super}
 p.search {width: 20em; float: right; margin-top: 0; text-align: right;}
 
 
+input.error {border: 2px solid #A00;}
 
 
 /* a {padding: 2px;} */
