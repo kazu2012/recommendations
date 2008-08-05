@@ -17,8 +17,12 @@ module ApplicationHelper
     link_to(text, path, {:class => "cancel"})
   end
 
-  def title(text)
-    content_tag("h1", text)
+  def title(text, sub_title = nil)
+    if sub_title
+      content_tag(:div, content_tag(:h1, text) + content_tag(:p, sub_title), :class => :title)
+    else
+      content_tag("h1", text)
+    end
   end
 
   def resource_title(entity, resource_path = nil)

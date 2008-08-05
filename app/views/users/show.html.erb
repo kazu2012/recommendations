@@ -1,5 +1,10 @@
 <% @page_title = @user.username %>
-<%= title(@user.username)%>
+
+<% if logged_in? && @user.id == current_user.id %>
+	<%= title(@user.username, "(this is you)")%>
+<% else%>
+	<%= title(@user.username)%>
+<% end %>
 
 <p><%= @user.username %> has added <%= pluralize @user.recommendations.size, "recommendation" %> and <%= pluralize @user.taggings.size, "tag" %>.</p>
 
