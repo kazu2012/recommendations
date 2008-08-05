@@ -24,6 +24,12 @@ end
 
 end
 
+@taggings.each do |tagging|
+	
+	@activities << [tagging.created_at, "Tagged " + link_to(tagging.recommendation.name, recommendation_path(tagging.recommendation)) + " with " + tag_link(tagging) + " " + time_ago_in_words(tagging.created_at) + " ago."]
+
+end
+
 @activities.sort!
 @activities.reverse!
 

@@ -29,6 +29,8 @@ class UsersController < ApplicationController
 
     @justifications = Justification.find(:all, :conditions => ["user_id = ?", @user.id], :limit => 10, :order => "created_at DESC")
   
+    @taggings = Tagging.find(:all, :conditions => ["user_id = ?", @user.id], :limit => 20, :order => "created_at DESC")
+  
   end
 
   def index
