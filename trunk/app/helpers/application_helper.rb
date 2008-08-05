@@ -1,6 +1,12 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   
+  def microid(email, url)
+    hash1 = Digest::SHA1.hexdigest("mailto:" + email)
+    hash2 = Digest::SHA1.hexdigest(url)
+    return "mailto+url:sha1:" + Digest::SHA1.hexdigest(hash1 + hash2)
+  end
+  
   def tag_link(tagging, rel_link = true)
     if rel_link
       link_to(tagging.tag_text, tag_path(tagging.tag.name), {:rel => "tag"})
