@@ -1,6 +1,6 @@
 atom_feed({'xmlns:app' => 'http://www.w3.org/2007/app',
     'xmlns:openSearch' => 'http://a9.com/-/spec/opensearch/1.1/'}) do |feed|
-  feed.title("My great blog!")
+  feed.title("Recommendations")
   feed.updated((@recommendations.first.created_at))
   
   for recommendation in @recommendations
