@@ -37,11 +37,19 @@ class RecommendationsController < ApplicationController
     end
   end
   
+  def feed
+    @recommendations = Recommendation.find(:all, :conditions => "deleted_at IS NULL",
+                                      :order => "updated_at DESC"
+                                      )
+    
+  end
+  
   def untagged
     @recommendations = Recommendation.find(:all,
                                         :conditions => "deleted_at IS NULL and taggings_count = 0",
                                         :order => "updated_at DESC"
                                         )
+                                        
   end
   
   def search
