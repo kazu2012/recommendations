@@ -32,8 +32,6 @@ class RecommendationsController < ApplicationController
     respond_to do |format|
       format.html # index.rhtml
       format.xml  { render :xml => @recommendations.to_xml }
-      format.rss
-      format.atom
     end
   end
   
