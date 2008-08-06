@@ -41,14 +41,19 @@ class RecommendationsController < ApplicationController
     @recommendations = Recommendation.find(:all, :conditions => "deleted_at IS NULL",
                                       :order => "updated_at DESC"
                                       )
-    
+
+    respond_to do |format|
+      format.rss
+      format.atom
+    end
+
   end
   
   def untagged
     @recommendations = Recommendation.find(:all,
                                         :conditions => "deleted_at IS NULL and taggings_count = 0",
                                         :order => "updated_at DESC"
-                                        )
+                                        )                      
                                         
   end
   
