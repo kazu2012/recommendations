@@ -11,6 +11,9 @@ class UsersController < ApplicationController
     # uncomment at your own risk
     # reset_session
     @user = User.new(params[:user])
+    
+    @user.username = @user.username.gsub(".", "")
+    
     @user.save
     if @user.errors.empty?
       self.current_user = @user
