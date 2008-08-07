@@ -7,7 +7,7 @@
 	
 	<%= editable_text(description_format(@justification.justification), "Edit", new_recommendation_justification_path(@recommendation)) %>
 	
-	<p>Last updated <%= time_ago_in_words(@justification.updated_at) %> ago. 
+	<p>Last updated <%= time_ago_in_words(@justification.updated_at) %> ago by <%= user_link(@justification.user)%>. 
 	<% if @recommendation.justifications.count > 1 %>
 		There have been <%= link_to pluralize(@recommendation.justifications.count, "revision"), recommendation_justifications_path(@recommendation) %>.
 	<% end %>
