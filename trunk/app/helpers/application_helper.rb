@@ -65,7 +65,7 @@ module ApplicationHelper
   end  
   
   def description_format(text)
-    paragraph_format(auto_link_phone_numbers(auto_link(mark_list(mark_code(text)))))
+    paragraph_format(auto_link_phone_numbers(auto_link(mark_list(mark_code(replace_typography(text))))))
   end
   
   def mark_list(text)
@@ -135,13 +135,33 @@ module ApplicationHelper
   end
   
   def words(string)
-    string = string.to_s.downcase.gsub(/[\",:.]/, '').  #remove punctuation marks
+    string = replace_typography(string).downcase.
+      gsub(/[\"\',:.‘’]/, '').  #remove punctuation marks
       gsub(/(\s+)[^a-z]+(\s+)/, '\1\2').  #remove strings with no word characters
       gsub(/(^<.*$|<[^>]*>)/, '')   #remove markup
     
     return string.to_s.split(/\s+/)
   end  
   
+  def replace_typography(string)
+    string.
+    gsub(/\'(\d\ds)/, '’\1').             # replacing '30s with ’30s
+    gsub(/(\d+)"(\s)/, '\1″\2').          # replacing " with double prime
+    gsub(/(\d+)'(\s)/, '\1′\2').          # replacing " with double prime
+    gsub(/([^\s]+)\'(\s)/, '\1’\2').      # replacing ' with ’ (right single quote)
+    gsub(/(\s)\'([^\s])/, '\1‘\2').       # replacing ' with ‘ (left single quote)
+    gsub(/([^\s]+)\"/, '\1”').            # replacing ' with ” (right double quote)
+    gsub(/\"([a-z])/, '“\1').             # replacing ' with “ (left double quote)
+    gsub(/([^\s])\'([^\s])/, '\1’\2').    # replacing ' with ’ (apostrophe)
+#   gsub(/(\s)\"(\s)/, '\1&#12291;\2').   # replacing " with 〃 (ditto mark)
+    gsub(/(\d+)x(\d+)/, '\1×\2').         # replacing x with multiplication char
+    gsub(/([a-zA-Z])-([a-zA-Z])/, '\1‐\2'). # replacing - with hyphen char
+    gsub(/([\d])-([\d])/, '\1–\2').       # replacing - with en-dash
+    gsub(/([^\.])\.\.\.([^\.])/, '\1…\2').# replacing ... with elipsis
+    to_s
+  end
+
+    
   def pluralize_verb_noun(count,noun, verb = "is")
     return pluralize_verb(count, verb) + " " + pluralize(count, noun) 
   end
