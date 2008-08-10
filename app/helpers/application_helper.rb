@@ -127,10 +127,10 @@ module ApplicationHelper
   end
   
   def word_count(string)
-    pluralize(words(string), "word")
+    pluralize(number_of_words(string), "word")
   end
   
-  def words(string)
+  def number_of_words(string)
     return string.split(/\s+/).size
   end
   
