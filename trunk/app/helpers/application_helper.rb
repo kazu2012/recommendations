@@ -131,8 +131,16 @@ module ApplicationHelper
   end
   
   def number_of_words(string)
-    return string.split(/\s+/).size
+    return words(string).size
   end
+  
+  def words(string)
+    string = string.to_s.downcase.gsub(/[\",:.]/, '').  #remove punctuation marks
+      gsub(/(\s+)[^a-z]+(\s+)/, '\1\2').  #remove strings with no word characters
+      gsub(/(^<.*$|<[^>]*>)/, '')   #remove markup
+    
+    return string.to_s.split(/\s+/)
+  end  
   
   def pluralize_verb_noun(count,noun, verb = "is")
     return pluralize_verb(count, verb) + " " + pluralize(count, noun) 
