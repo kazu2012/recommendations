@@ -73,7 +73,7 @@ module ApplicationHelper
   end
   
   def mark_li(text)
-    text.gsub(/\n+(\*\s)(.*)$/) do 
+    text.gsub(/^(\*\s)(.*)$/) do 
       text = "<li>" + $2 + "</li>"
     end
   end
@@ -83,15 +83,14 @@ module ApplicationHelper
   end
 
   def mark_start_ul(text)
-    text.gsub(/\r(<li>)/) do
-      text = "\r<ul>" + $1
+    text.gsub(/(\A|\n\n)(<li>)/) do
+      text = $1 + "<ul>\n" + $2
     end
   end
   
   def mark_end_ul(text)
-  
-    text.gsub(/(<\/li>)$/) do
-      text = $1 + "</ul>"
+    text.gsub(/(<\/li>)(\n\n|\z)/) do
+      text = $1 + "\n</ul>" + $2
     end
   end
   
