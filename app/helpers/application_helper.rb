@@ -77,8 +77,9 @@ module ApplicationHelper
   
   
   def mark_code(text)
-    text.gsub(/(^<.*$|<[^>]*>)/) do 
-      text = "<code>" + h($1) + "</code>"
+    h(text).
+    gsub(/(^&lt;.*$|&lt;.*&gt;)/) do 
+      text = "<code>" + ($1) + "</code>"
     end
   end
   
