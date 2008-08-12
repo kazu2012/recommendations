@@ -65,34 +65,16 @@ module ApplicationHelper
   end  
   
   def description_format(text)
-    paragraph_format(auto_link_phone_numbers(auto_link(mark_list(mark_code(replace_typography(text))))))
+    paragraph_format(auto_link_phone_numbers(auto_link(mark_lists(mark_code(replace_typography(text))))))
   end
   
-  def mark_list(text)
-    text = mark_ul(mark_li(text))
-  end
-  
-  def mark_li(text)
-    text.gsub(/^(\*\s)(.*)$/) do 
-      text = "<li>" + $2 + "</li>"
+  def mark_lists(text)  
+    text.gsub(/\r\n/, "\n").
+    gsub(/(\n\n)((^\*\s.*$\n)+)\n/) do 
+      text = "\n\n<ul>\n" + $2.gsub(/\*\s(.*)$/, '<li>\1</li>') + "</ul>\n\n"
     end
   end
   
-  def mark_ul(text)
-    text = mark_end_ul(mark_start_ul(text))
-  end
-
-  def mark_start_ul(text)
-    text.gsub(/(\A|\n\n)(<li>)/) do
-      text = $1 + "<ul>\n" + $2
-    end
-  end
-  
-  def mark_end_ul(text)
-    text.gsub(/(<\/li>)(\n\n|\z)/) do
-      text = $1 + "\n</ul>" + $2
-    end
-  end
   
   def mark_code(text)
     text.gsub(/(^<.*$|<[^>]*>)/) do 
