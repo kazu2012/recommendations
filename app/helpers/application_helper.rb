@@ -211,5 +211,45 @@ module ApplicationHelper
     return "<#{name}#{tag_options(options, escape) if options}#{open ? ">" : " ></#{name}>"}"
   end
   
+  def auto_link(text)
+    auto_link_urls(text)
+  end
+  
+  def auto_link_urls(text, href_options = {})
+    extra_options = tag_options(href_options.stringify_keys) || ""
+
+    auto_link_re = %r{
+     (                          # leading text
+       <\w+.*?>|                # leading HTML tag, or
+       [^=!:'"/]|               # leading punctuation, or 
+       ^                        # beginning of line
+     )
+     (https?://)              # protocol spec
+
+     (
+       [-\w]+                   # subdomain or domain
+       (?:\.[-\w]+)*            # remaining subdomains or domain
+       (?::\d+)?                # port
+       (?:/(?:(?:[~\w\+@%-]|(?:[,.;:][^\s$]))+)?)* # path
+       (?:\?[\w\+@%&=.;-]+)?     # query string
+       (?:\#[\w\-\/]*)?           # trailing anchor
+     )(([[:punct:]]|\s|<|$))       # trailing text
+    }x
+    
+    text.gsub(auto_link_re) do
+      all, a, b, c, d = $&, $1, $2, $3, $5
+      
+      text = a + "<a href=\"" + b + c + "\">" + truncate_in_middle(c, 50) + "</a>" + $5
+    end
+  end
+  
+  def truncate_in_middle(text, length = 30, truncate_string = "...")
+    if text
+      l = ((length - truncate_string.chars.length) / 2).to_int
+      chars = text.chars
+      (chars.length > length ? chars[0...l] + truncate_string + chars[chars.length-l...chars.length] : text).to_s
+    end
+  end
+
   
 end
