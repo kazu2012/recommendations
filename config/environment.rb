@@ -49,7 +49,7 @@ Rails::Initializer.run do |config|
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
     :session_key => '_svn-recommendations_session',
-    :secret      => '9c8a13a7f59d8fc13c173d5703bc5e799f6a0bbc8883c8a08e9b442b8254f761f4c821e37867626431762273d9ee35610fb5b20f94769619344392c5241afd77'
+    :secret      => '0f47a0bb8f34a5e0b825432e3ab26d206a2dbdcc398a75adacac6436374c5bb4ac53bf4cabaa65425cb8eec78b8fb1e1a2a6c56f75e5cb8edcecf4238fad8cb1'
   }
 
   # Use the database for sessions instead of the cookie-based default,
@@ -64,18 +64,4 @@ Rails::Initializer.run do |config|
 
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
-
-end
-
-
-ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
-  error_class = "error"
-  if html_tag =~ /<(input|textarea|select)[^>]+class=/
-    class_attribute = html_tag =~ /class=['"]/
-    html_tag.insert(class_attribute + 7, "#{error_class} ")
-  elsif html_tag =~ /<(input|textarea|select)/
-    first_whitespace = html_tag =~ /\s/
-    html_tag[first_whitespace] = " class='#{error_class}' "
-  end
-  html_tag
 end
