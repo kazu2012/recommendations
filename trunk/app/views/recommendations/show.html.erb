@@ -14,11 +14,7 @@
 	
 	<% end %>
 	
-	<p>Last updated <%= (time_ago_in_words(@description.updated_at))%> ago. 
-	<% if @recommendation.descriptions.count > 1 %>
-	There have been <%= link_to pluralize(@recommendation.descriptions.count, "revision"), recommendation_descriptions_path(@recommendation) %>.
-	<% end %>
-	</p>
+
 
 <% else %>
 
@@ -28,6 +24,16 @@
 	
 <% end %>
 
-<p>Created by <%= user_link(@recommendation.user) %> <%= time_ago_in_words(@recommendation.created_at) %> ago.</p>
+<p class="metadata">
+	Created by <%= user_link(@recommendation.user) %> <%= time_ago_in_words(@recommendation.created_at) %> ago.
+	<% if @description %>
+	Last updated <%= (time_ago_in_words(@description.updated_at))%> ago. 
+		<% if @recommendation.descriptions.count > 1 %>
+		There have been <%= link_to pluralize(@recommendation.descriptions.count, "revision"), recommendation_descriptions_path(@recommendation) %>.
+		<% end %>
+	<% end %>
+</p>
+
+<p></p>
 
 <%= render(:partial => "taggings")%>
