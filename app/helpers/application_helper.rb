@@ -132,8 +132,8 @@ module ApplicationHelper
     gsub(/(\d+)'(\s)/, '\1′\2').          # replacing " with double prime
     gsub(/([^\s]+)\'(\s)/, '\1’\2').      # replacing ' with ’ (right single quote)
     gsub(/(\s)\'([^\s])/, '\1‘\2').       # replacing ' with ‘ (left single quote)
-    gsub(/([^\s]+)\"/, '\1”').            # replacing ' with ” (right double quote)
-    gsub(/\"([a-z])/, '“\1').             # replacing ' with “ (left double quote)
+    gsub(/([^\s]+)\"/, '\1”').            # replacing " with ” (right double quote)
+    gsub(/\"([a-zA-Z])/, '“\1').             # replacing " with “ (left double quote)
     gsub(/([^\s])\'([^\s])/, '\1’\2').    # replacing ' with ’ (apostrophe)
 #   gsub(/(\s)\"(\s)/, '\1&#12291;\2').   # replacing " with 〃 (ditto mark)
     gsub(/(\d+)x(\d+)/, '\1×\2').         # replacing x with multiplication char
