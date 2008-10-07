@@ -6,6 +6,12 @@
 
 <%= error_messages_for :justification %>
 
+<% if @preview == true %>
+
+<%= description_format(@justification.justification) %>
+
+<% end %>
+
 <% form_for(:justification, :url => recommendation_justifications_path) do |f| %>
 
 <% if @old_justification %>
@@ -16,6 +22,8 @@
 
   <p>
     <%= submit_tag "Create" %>
+    <%= submit_tag "Preview" %>
+
 	<%= cancel_link_to justification_recommendation_path(@recommendation)%>
   </p>
 <% end %>
