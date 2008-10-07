@@ -33,6 +33,8 @@ class DescriptionsController < ApplicationController
     
     @old_description = Description.find(:first, :conditions => ["recommendation_id = ?", @recommendation.id], :order => ["created_at DESC"])
     
+    @preview = false
+    
   end
 
   def edit
@@ -46,16 +48,21 @@ class DescriptionsController < ApplicationController
     @description.recommendation = @recommendation
     @description.user_id = current_user.id
 
-    respond_to do |format|
-      if @description.save
-        @recommendation.updated_at = DateTime.now
-        @recommendation.save!
-        format.html { redirect_to recommendation_url(@recommendation) }
-        format.xml  { head :created, :location => description_url(@recommendation, @description) }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @description.errors.to_xml }
-      end
+    if params[:commit] == "Preview" 
+      @preview = true
+      render :action => :new
+    else
+      respond_to do |format|
+        if @description.save
+          @recommendation.updated_at = DateTime.now
+          @recommendation.save!
+          format.html { redirect_to recommendation_url(@recommendation) }
+          format.xml  { head :created, :location => description_url(@recommendation, @description) }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @description.errors.to_xml }
+        end
+      end      
     end
   end
 
