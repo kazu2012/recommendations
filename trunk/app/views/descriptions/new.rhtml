@@ -27,6 +27,6 @@ end
 		<%= f.text_area :description %>
 	<% end %>
   <p>
-    <%= submit_tag "Save" %> <%= submit_tag "Preview" %> <%= cancel_link_to recommendation_path(@recommendation)%>
+    <%= submit_tag "Save", {:class => "submit"} %> <%= submit_tag "Preview" %> <%= cancel_link_to recommendation_path(@recommendation)%>
   </p>
 <% end %>
