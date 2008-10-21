@@ -14,12 +14,17 @@ There is also a <%= link_to @tag.name, tag_path(@tag.name) %> tag.
 <% if @recommendations.length > 0 %>
 	<ul class="recommendations"> 
 
-	<% for recommendation in @recommendations %>
-	  <li><%= link_to h(recommendation.name), recommendation_path(recommendation) %>
+	<% @recommendations.each_with_index do |recommendation, i| %>
+
+  <li><% if params[:search] && i == 0 %><%= link_to h(recommendation.name), recommendation_path(recommendation), {:rel => "prefetch"} %>
+	 	<% else %> <%= link_to h(recommendation.name), recommendation_path(recommendation) %><% end %>
 		<%- if @tag && recommendation.tags.include?(@tag) -%>
 			<span class="tags">(tagged <%= link_to(@tag.name, tag_path(@tag.name))%>)</span>
 		<%- end -%>
-		</li>
+
+	</li>
+
+
 	<% end %> 
 	</ul>
 

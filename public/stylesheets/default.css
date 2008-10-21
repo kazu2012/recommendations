@@ -41,7 +41,8 @@ ul.recommendations {list-style-type: none;}
 table th {padding-bottom: .5em;}
 table td {padding-right: 3em;}
 
-
+input.submit {margin-right: 2em;}
+ 
 
 /* Text size, weight, style, family and line-height */
 
@@ -60,7 +61,7 @@ div.editable_field div.field p {line-height: 1.4em; margin-top: 0;}
 h1 {font-size: 2em; font-weight: normal;}
 
 input.title {font-size: 2em;}
-input.submit {font-size: 1.4em;}
+input.submit {font-size: 1.2em;}
 
 p.tags {font-size: .9em;}
 
@@ -108,9 +109,12 @@ div.editable_field h1 {margin: 0;}
 
 
 div#body div.editable_field:focus,
-div#body div.editable_field:hover {left: -6em; position: relative; top: 0; width: 54em; /* Need to re-do this*/}
+div#body div.editable_field:hover {left: -6em; position: relative; top: 0; width: 56em; /* Need to re-do this*/}
 div.editable_field div.edit_info:focus,
 div.editable_field:hover div.edit_info {float: left; width: 5.6em; padding-left: .2em; padding-right: .2em;}
+div.editable_field div.edit_info:focus a,
+div.editable_field:hover div.edit_info a {padding-left: 1;}
+
 
 div.editable_field:focus div.field,
 div.editable_field:hover div.field,
@@ -148,6 +152,8 @@ a:focus {background-color: black;}
 
 
 /* Border styles */
+
+input.submit {border-style: solid; -moz-border-radius: 6px; -webkit-border-radius: 6px;}
 
 div, h1, input.title {border-style: solid;}
 
