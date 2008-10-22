@@ -32,6 +32,7 @@
 		There have been <%= link_to pluralize(@recommendation.descriptions.count, "revision"), recommendation_descriptions_path(@recommendation) %>.
 		<% end %>
 	<% end %>
+	Viewed <%= pluralize(@views, "time") %>.
 </p>
 
 <p></p>
