@@ -61,11 +61,22 @@ class RecommendationsController < ApplicationController
   
   def show
     @recommendation = Recommendation.find(params[:id])
-    
+        
     if @recommendation.is_deleted == true 
       redirect_to homepage_path
       #raise exception
     else
+       
+      if @recommendation.views
+        @views = @recommendation.views + 1
+      else
+        @views = 1
+      end
+
+      #This is a cheat to prevent updated_at being updated.
+      sql = "UPDATE recommendations SET views = " + @views.to_s + " WHERE id = " + @recommendation.id.to_s    
+      ActiveRecord::Base.connection.execute(sql)
+      
       @description = Description.find(:first, :conditions => ["recommendation_id = ?", @recommendation.id], :order => ["created_at DESC"])
 
       respond_to do |format|
@@ -95,6 +106,7 @@ class RecommendationsController < ApplicationController
     
     @recommendation.name = @recommendation.name.strip.gsub(/(\s)+/, " ")
     
+    @recommendation.views = 1
 
     respond_to do |format|
       if @recommendation.save
