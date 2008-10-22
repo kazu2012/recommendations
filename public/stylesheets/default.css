@@ -126,8 +126,6 @@ div.editable_field:hover form {margin-left: 6em;}
 
 body {background-color: #343628; color: #B5D180;}
 
-/* div, h1 {border-color: white;} */
-
 div#message {border-color: #222; background-color: #555; color: #FFF;}
 div#message.warning {background-color: #700; color: white;}
 
@@ -143,6 +141,8 @@ body a 						{color: #60A176;}
 body div#body a:visited 	{color: #A0A176;}
 
 body div#body code {background-color: #333; color: #B7CC8F;}
+
+span.tag {color: #CCC;}
 
 a.cancel {color: red;}
 

@@ -11,7 +11,7 @@
 <% end %>
 
 <% if @recommendations.size >= 10 %>
-<p><%= link_to "More recommendations", recommendations_path, :rel => "prefetch" %></p>
+<p><%= link_to "All recommendations", recommendations_path, :rel => "prefetch" %></p>
 <% end %>
 
 <p><%= link_to "Add a recommendation", new_recommendation_path %></p>

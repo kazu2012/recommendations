@@ -6,10 +6,7 @@ class UsersController < ApplicationController
 
   def create
     cookies.delete :auth_token
-    # protects against session fixation attacks, wreaks havoc with 
-    # request forgery protection.
-    # uncomment at your own risk
-    # reset_session
+
     @user = User.new(params[:user])
     
     @user.username = @user.username.gsub(".", "")
@@ -51,7 +48,6 @@ class UsersController < ApplicationController
     
     respond_to do |format|
        if @user.save!
-         flash[:notice] = "Updated!"
          format.html { redirect_to edit_user_url(@user.username) }
          format.xml  { head :ok }
        else
