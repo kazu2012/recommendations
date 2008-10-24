@@ -65,7 +65,7 @@ module ApplicationHelper
   end  
   
   def description_format(text)
-    paragraph_format(auto_link_phone_numbers(auto_link(mark_lists(mark_code(replace_typography(text))))))
+    usertext(text)
   end
   
   def mark_lists(text)  
