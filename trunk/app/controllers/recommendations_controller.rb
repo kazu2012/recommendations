@@ -106,7 +106,7 @@ class RecommendationsController < ApplicationController
     
     @recommendation.name = @recommendation.name.strip.gsub(/(\s)+/, " ")
     
-    @recommendation.views = 1
+    @recommendation.views = 0
 
     respond_to do |format|
       if @recommendation.save
