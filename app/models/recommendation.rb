@@ -24,6 +24,12 @@ class Recommendation < ActiveRecord::Base
     self.save!
   end
   
+  def increment_view_count!
+    views = self.views + 1
+    sql = "UPDATE recommendations SET views = " + views.to_s + " WHERE id = " + self.id.to_s    
+    ActiveRecord::Base.connection.execute(sql)    
+  end
+  
   def tags_csv
     if self.taggings.size > 0
       tags = Array.new
