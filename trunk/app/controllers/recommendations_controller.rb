@@ -66,21 +66,12 @@ class RecommendationsController < ApplicationController
       redirect_to homepage_path
       #raise exception
     else
-       
-      if @recommendation.views
-        @views = @recommendation.views + 1
-      else
-        @views = 1
-      end
-
-      #This is a cheat to prevent updated_at being updated.
-      sql = "UPDATE recommendations SET views = " + @views.to_s + " WHERE id = " + @recommendation.id.to_s    
-      ActiveRecord::Base.connection.execute(sql)
       
-      @description = Description.find(:first, :conditions => ["recommendation_id = ?", @recommendation.id], :order => ["created_at DESC"])
-
+      @recommendation.increment_view_count!
+      @recommendation.views += 1
+            
       respond_to do |format|
-        format.html # show.rhtml
+        format.html
         format.xml  { render :xml => @recommendation.to_xml }
       end
     end

@@ -5,12 +5,12 @@
 		
 <%= render :partial => "navigation" %>
 
-<% if @description %>
+<% if @recommendation.description %>
 
 	<% if logged_in? %>
-		<%= editable_text(usertext(@description.description), "Edit", new_recommendation_description_path(@recommendation)) %>
+		<%= editable_text(usertext(@recommendation.description.description), "Edit", new_recommendation_description_path(@recommendation)) %>
 	<% else %>
-		<%= usertext(@description.description) %>
+		<%= usertext(@recommendation.description.description) %>
 	
 	<% end %>
 	
@@ -26,13 +26,13 @@
 
 <p class="metadata">
 	Created by <%= user_link(@recommendation.user) %> <%= time_ago_in_words(@recommendation.created_at) %> ago.
-	<% if @description %>
-	Last updated <%= (time_ago_in_words(@description.updated_at))%> ago. 
+	<% if @recommendation.description %>
+	Last updated <%= (time_ago_in_words(@recommendation.description.updated_at))%> ago. 
 		<% if @recommendation.descriptions.count > 1 %>
 		There have been <%= link_to pluralize(@recommendation.descriptions.count, "revision"), recommendation_descriptions_path(@recommendation) %>.
 		<% end %>
 	<% end %>
-	Viewed <%= pluralize(@views, "time") %>.
+	Viewed <%= pluralize(@recommendation.views, "time") %>.
 </p>
 
 <p></p>
