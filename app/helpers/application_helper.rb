@@ -68,33 +68,6 @@ module ApplicationHelper
     usertext(text)
   end
   
-  def mark_lists(text)  
-    text.gsub(/\r\n/, "\n").
-    gsub(/(\n\n)((^\*\s.*$\n)+)\n/) do 
-      text = "\n\n<ul>\n" + $2.gsub(/\*\s(.*)$/, '<li>\1</li>') + "</ul>\n\n"
-    end
-  end
-  
-  
-  def mark_code(text)
-    h(text).
-    gsub(/(^&lt;.*$|&lt;.*&gt;)/) do 
-      text = "<code>" + ($1) + "</code>"
-    end
-  end
-  
-  def paragraph_format(text)
-    content_tag("p", text.to_s.
-      gsub(/\r\n?/, "\n").                    # \r\n and \r -> \n
-      gsub(/([^\n])\n([^\n])/, '\1 \2').      # Remove carriage returns
-      gsub(/\n\n+/, "</p>\n\n<p>"))           # 2+ newline  -> paragraph
-  end  
-  
-  def auto_link_phone_numbers(text)
-    text.gsub(/(\s|^)((0|\+44)\d{10,10})\b/) do 
-      text = $1 + "<a href=\"tel:" + $2 + "\">" + $2 + "</a>"
-    end
-  end
   
   def link_to_content(name)
     link_to(name, "#body", {:class => "skip_navigation", :accesskey => "2"})
@@ -124,25 +97,6 @@ module ApplicationHelper
     
     return string.to_s.split(/\s+/)
   end  
-  
-  def replace_typography(string)
-    string.
-    gsub(/\'(\d\ds)/, '’\1').             # replacing '30s with ’30s
-    gsub(/(\d+)"(\s)/, '\1″\2').          # replacing " with double prime
-    gsub(/(\d+)'(\s)/, '\1′\2').          # replacing " with double prime
-    gsub(/([^\s]+)\'(\s)/, '\1’\2').      # replacing ' with ’ (right single quote)
-    gsub(/(\s)\'([^\s])/, '\1‘\2').       # replacing ' with ‘ (left single quote)
-    gsub(/([^\s]+)\"/, '\1”').            # replacing " with ” (right double quote)
-    gsub(/\"([a-zA-Z])/, '“\1').             # replacing " with “ (left double quote)
-    gsub(/([^\s])\'([^\s])/, '\1’\2').    # replacing ' with ’ (apostrophe)
-#   gsub(/(\s)\"(\s)/, '\1&#12291;\2').   # replacing " with 〃 (ditto mark)
-    gsub(/(\d+)x(\d+)/, '\1×\2').         # replacing x with multiplication char
-    gsub(/([a-zA-Z])-([a-zA-Z])/, '\1‐\2'). # replacing - with hyphen char
-    gsub(/([\d])-([\d])/, '\1–\2').       # replacing - with en-dash
-    gsub(/([^\.])\.\.\.([^\.])/, '\1…\2').# replacing ... with elipsis
-    to_s
-  end
-
     
   def pluralize_verb_noun(count,noun, verb = "is")
     return pluralize_verb(count, verb) + " " + pluralize(count, noun) 
@@ -210,46 +164,5 @@ module ApplicationHelper
   def tag(name, options = nil, open = false, escape = true)
     return "<#{name}#{tag_options(options, escape) if options}#{open ? ">" : " ></#{name}>"}"
   end
-  
-  def auto_link(text)
-    auto_link_urls(text)
-  end
-  
-  def auto_link_urls(text, href_options = {})
-    extra_options = tag_options(href_options.stringify_keys) || ""
-
-    auto_link_re = %r{
-     (                          # leading text
-       <\w+.*?>|                # leading HTML tag, or
-       [^=!:'"/]|               # leading punctuation, or 
-       ^                        # beginning of line
-     )
-     (https?://)              # protocol spec
-
-     (
-       [-\w]+                   # subdomain or domain
-       (?:\.[-\w]+)*            # remaining subdomains or domain
-       (?::\d+)?                # port
-       (?:/(?:(?:[~\w\+@%-]|(?:[,.;:][^\s$]))+)?)* # path
-       (?:\?[\w\+@%&=.;-]+)?     # query string
-       (?:\#[\w\-\/]*)?           # trailing anchor
-     )(([[:punct:]]|\s|<|$))       # trailing text
-    }x
-    
-    text.gsub(auto_link_re) do
-      all, a, b, c, d = $&, $1, $2, $3, $5
-      
-      text = a + "<a href=\"" + b + c + "\">" + truncate_in_middle(c, 50) + "</a>" + $5
-    end
-  end
-  
-  def truncate_in_middle(text, length = 30, truncate_string = "...")
-    if text
-      l = ((length - truncate_string.chars.length) / 2).to_int
-      chars = text.chars
-      (chars.length > length ? chars[0...l] + truncate_string + chars[chars.length-l...chars.length] : text).to_s
-    end
-  end
-
   
 end
