@@ -1,7 +1,7 @@
 <% if @old_justification %>
-	<h1>Edit justification for <%= link_to @recommendation.name, recommendation_path(@recommendation)%></h1>
+	<h1>Edit justification for <%= link_to h(@recommendation.name), recommendation_path(@recommendation)%></h1>
 <% else %>
-	<h1>Add justification for <%= link_to @recommendation.name, recommendation_path(@recommendation)%></h1>
+	<h1>Add justification for <%= link_to h(@recommendation.name), recommendation_path(@recommendation)%></h1>
 <% end %>
 
 <%= error_messages_for :justification %>
