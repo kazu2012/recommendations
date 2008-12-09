@@ -116,6 +116,9 @@ div.editable_field div.edit_info:focus a,
 div.editable_field:hover div.edit_info a {padding-left: 1;}
 
 
+div.editable_field div.field p,
+div.editable_field div.field div {margin-top: 0; margin-bottom: 1em;}
+
 div.editable_field:focus div.field,
 div.editable_field:hover div.field,
 div.editable_field:hover form {margin-left: 6em;}
