@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users
 
-  map.resources :taggings
+  map.resources :taggings, :member => {:delete => :get}
 
   map.resources :tags
 
