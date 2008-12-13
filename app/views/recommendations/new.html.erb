@@ -8,6 +8,8 @@
 	<div><label for="recommendation_name">Title:</label> <%= f.text_field :name %></div>
 	
 	<p>
-    <%= submit_tag "Save", {:class => "submit"} %>
+    <%= submit_tag "Publish", {:class => "submit"} %>
+		<%= cancel_link_to homepage_path %>
+
   </p>
 <% end %>

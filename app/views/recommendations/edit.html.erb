@@ -10,7 +10,7 @@
 
 		<label for="recommendation_name">New name:</label> <%= f.text_field :name %>
   <p>
-    <%= submit_tag "Update" %>
+    <%= submit_tag "Save", {:class => "submit"} %>
 
 	<%= cancel_link_to recommendation_path(@recommendation) %>
   </p>
