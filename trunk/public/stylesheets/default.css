@@ -147,7 +147,8 @@ body div#body code {background-color: #333; color: #B7CC8F;}
 
 span.tag {color: #CCC;}
 
-a.cancel {color: red;}
+div#body a.cancel,
+div#body a.cancel:visited {color: #F33;}
 
 a:active {color: #245B70;}
 
