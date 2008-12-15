@@ -113,7 +113,7 @@ div#body div.editable_field:hover {left: -6em; position: relative; top: 0; width
 div.editable_field div.edit_info:focus,
 div.editable_field:hover div.edit_info {float: left; width: 5.6em; padding-left: .2em; padding-right: .2em;}
 div.editable_field div.edit_info:focus a,
-div.editable_field:hover div.edit_info a {padding-left: 1;}
+div.editable_field:hover div.edit_info a {padding-left: 0;}
 
 
 div.editable_field div.field p,
