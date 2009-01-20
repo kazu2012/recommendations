@@ -3,7 +3,7 @@
 <ol>
 <% for tag in @tags %>
 
-	<li><%= link_to(tag.name, tag_path(tag.name))%> (<%=tag.taggings.size%>)</li>
+	<li><%= link_to(h(tag.name), tag_path(tag.name))%> (<%=tag.taggings.size%>)</li>
 
 <% end %>
 </ol>
