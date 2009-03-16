@@ -3,7 +3,7 @@
 <% if @recommendations.size > 0 %>
 	<ul class="recommendations">
 		<% @recommendations.each do |r| %>
-			<li><%= link_to h(r.name), recommendation_path(r) %> added <span class="time_ago"><%= time_ago_in_words(r.created_at) %></span> ago.</li>
+			<li><%= link_to h(r.name), recommendation_path(r) %> updated <%= time_ago_in_words(r.updated_at)%> ago.</li>
 		<% end %>
 	</ul>
 <% else %>
