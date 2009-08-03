@@ -1,5 +1,5 @@
 
-<h1>Rename <%= h @recommendation.name %>?</h1>
+<h1>Rename <%= link_to(h(@recommendation.name), @recommendation) %>?</h1>
 
 <%= error_messages_for :recommendation %>
 
