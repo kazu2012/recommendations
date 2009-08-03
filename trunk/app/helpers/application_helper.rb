@@ -9,9 +9,9 @@ module ApplicationHelper
   
   def tag_link(tagging, rel_link = true)
     if rel_link
-      link_to(tagging.tag_text, tag_path(tagging.tag.name), {:rel => "tag"})
+      link_to(h(tagging.tag_text), tag_path(tagging.tag.name), {:rel => "tag"})
     else
-      link_to(tagging.tag_text, tag_path(tagging.tag.name))
+      link_to(h(tagging.tag_text), tag_path(tagging.tag.name))
     end
   end
   
@@ -158,6 +158,14 @@ module ApplicationHelper
   
   def xhtml_escape(text)
     html_escape(text)
+  end
+  
+  def updated_or_created_date(created_at, updated_at)
+    if created_at == updated_at
+      "created " + time_ago_in_words(created_at) + " ago"
+    else
+      "updated " + time_ago_in_words(updated_at) + " ago"
+    end
   end
   
   # HTML4 version of tag helper
