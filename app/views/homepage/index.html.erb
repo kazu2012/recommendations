@@ -10,15 +10,4 @@
 	<p>No recommendations created yet.</p>
 <% end %>
 
-<% if @recommendations.size >= 10 %>
-<p><%= link_to "All recommendations", recommendations_path, :rel => "prefetch" %></p>
-<% end %>
-
-<p><%= link_to "Add a recommendation", new_recommendation_path %></p>
-
-<% if @recommendations.size > 0 %>
-
-<p><%= link_to "Tags", tags_path %></p>
-
-<p><%= link_to "Undescribed recommendations", undescribed_recommendations_path %> <%= link_to "Unjustified recommendations", unjustified_recommendations_path %></p>
-<% end %>
+<p><%= link_to "Add a recommendation", new_recommendation_path, :class => "add" %></p>
