@@ -1,0 +1,1 @@
+A web app written in Ruby on Rails which allows you to keep track of recommendations and their justifications
